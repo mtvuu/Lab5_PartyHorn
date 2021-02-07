@@ -5,7 +5,6 @@ volumeNumber = document.getElementById("volume-number");
 hornSound = document.getElementById("horn-sound");
 volumeImage = document.getElementById("volume-image");
 honkButton = document.getElementById("honk-btn");
-//honkButton.type = "button";
 
 volumeSlider.oninput = () => {
   volumeNumber.value = volumeSlider.value;
@@ -15,30 +14,36 @@ volumeSlider.oninput = () => {
     volumeImage.src = "./assets/media/icons/volume-level-0.svg";
   } 
   else if (volumeNumber.value < 34) {
+    honkButton.disable = false;
     volumeImage.src = "./assets/media/icons/volume-level-1.svg";
   } 
   else if (volumeNumber.value < 67) {
+    honkButton.disable = false;
     volumeImage.src = "./assets/media/icons/volume-level-2.svg";
   } 
   else if (volumeNumber.value <= 100) {
+    honkButton.disable = false;
     volumeImage.src = "./assets/media/icons/volume-level-3.svg";
   }
 };
 
 volumeNumber.oninput = () => {
-    console.log("test");
   volumeSlider.value = volumeNumber.value;
   hornSound.volume = volumeNumber.value/100;
   if (volumeNumber.value == 0) {
+    honkButton.disable = true;
     volumeImage.src = "./assets/media/icons/volume-level-0.svg";
   } 
   else if (volumeNumber.value < 34) {
+    honkButton.disable = false;
     volumeImage.src = "./assets/media/icons/volume-level-1.svg";
   } 
   else if (volumeNumber.value < 67) {
+    honkButton.disable = false;
     volumeImage.src = "./assets/media/icons/volume-level-2.svg";
   } 
-  else if (volumeNumber.value <= 100){
+  else if (volumeNumber.value <= 100) {
+    honkButton.disable = false;
     volumeImage.src = "./assets/media/icons/volume-level-3.svg";
   }
 };
@@ -50,9 +55,7 @@ partyHorn = document.getElementById("radio-party-horn");
 soundImage = document.getElementById("sound-image");
 
 honkButton.onclick = () => {
-  if (hornSound.volume != 0) {
-    hornSound.play();
-  }
+  hornSound.play();
 };
 
 audioSelection.oninput = () => {
